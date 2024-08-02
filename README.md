@@ -6,30 +6,28 @@
 
 <!-- toc -->
 
-- [How to ask a question or propose something?](#how-to-ask-a-question-or-propose-something)
-- [What is this?](#what-is-this)
-- [Structure](#structure)
-- [General API Stuff](#general-api-stuff)
-  * [CORS](#cors)
-- [Authentication - JWT](#authentication---jwt)
-  * [Settings](#settings)
-  * [APIs](#apis)
-  * [Requiring authentication](#requiring-authentication)
-- [Authentication - Sessions](#authentication---sessions)
-  * [DRF & Overriding `SessionAuthentication`](#drf--overriding-sessionauthentication)
-  * [Cross origin](#cross-origin)
-  * [APIs](#apis-1)
-  * [`HTTP Only` / `SameSite`](#http-only--samesite)
-  * [Reading list](#reading-list)
-- [Example List API](#example-list-api)
-- [File uploads](#file-uploads)
-- [Helpful commands for local development without `docker compose`](#helpful-commands-for-local-development-without-docker-compose)
-- [Helpful commands for local development with `docker compose`](#helpful-commands-for-local-development-with-docker-compose)
-- [Deployment](#deployment)
-  * [Heroku](#heroku)
-  * [Render](#render)
-  * [AWS ECS](#aws-ecs)
-- [Linters and Code Formatters](#linters-and-code-formatters)
+- [Django Styleguide Example](#django-styleguide-example)
+  - [How to ask a question or propose something?](#how-to-ask-a-question-or-propose-something)
+  - [What is this?](#what-is-this)
+  - [Structure](#structure)
+  - [General API Stuff](#general-api-stuff)
+    - [CORS](#cors)
+  - [Authentication - JWT](#authentication---jwt)
+    - [Settings](#settings)
+    - [APIs](#apis)
+    - [Requiring authentication](#requiring-authentication)
+  - [Authentication - Sessions](#authentication---sessions)
+    - [DRF \& Overriding `SessionAuthentication`](#drf--overriding-sessionauthentication)
+    - [Cross origin](#cross-origin)
+    - [APIs](#apis-1)
+    - [`HTTP Only` / `SameSite`](#http-only--samesite)
+    - [Reading list](#reading-list)
+  - [Example List API](#example-list-api)
+  - [File uploads](#file-uploads)
+  - [Helpful commands for local development without `docker compose`](#helpful-commands-for-local-development-without-docker-compose)
+  - [Helpful commands for local development with `docker compose`](#helpful-commands-for-local-development-with-docker-compose)
+  - [Deployment](#deployment)
+  - [Linters and Code Formatters](#linters-and-code-formatters)
 
 <!-- tocstop -->
 
@@ -330,59 +328,6 @@ docker compose run django python manage.py shell
 ## Deployment
 
 This project is ready to be deployed either on **Heroku** **Render** or **AWS ECS**.
-
-### Heroku
-
-Deploying a Python / Django application on Heroku is quite straighforward & this project is ready to be deployed.
-
-To get an overview of how Heroku deployment works, we recommend reading this first - <https://devcenter.heroku.com/articles/deploying-python>
-
-**Files related to Heroku deployment:**
-
-1. `Procfile`
-   - Comes with default `web`, `worker` and `beat` processes.
-   - Additionally, there's a `release` phase to run migrations safely, before releasing the new build.
-1. `runtime.txt`
-   - Simply specifies the Python version to be used.
-1. `requirements.txt`
-   - Heroku requires a root-level `requirements.txt`, so we've added that.
-
-**Additionally, you need to specify at least the following settings:**
-
-1. `DJANGO_SETTINGS_MODULE`, usually to `config.django.production`
-1. `SECRET_KEY` to something secret. [Check here for ideas](https://stackoverflow.com/questions/41298963/is-there-a-function-for-generating-settings-secret-key-in-django).
-1. `ALLOWED_HOSTS`, usually to the default heroku domain (for example - `hacksoft-styleguide-example.herokuapp.com`)
-
-On top of that, we've added `gunicorn.conf.py` with some example settings.
-
-**We recommend the following materials, to figure out `gunicorn` defaults and configuration:**
-
-1. <https://devcenter.heroku.com/articles/python-gunicorn>
-1. <https://adamj.eu/tech/2019/09/19/working-around-memory-leaks-in-your-django-app/>
-1. <https://adamj.eu/tech/2021/12/29/set-up-a-gunicorn-configuration-file-and-test-it/>
-1. Worker settings - <https://docs.gunicorn.org/en/latest/settings.html#worker-processes>
-1. A brief description of the architecture of Gunicorn - <https://docs.gunicorn.org/en/latest/design.html>
-
-### Render
-
-To get an overview of how Render deployment works, we recommend reading this first - <https://render.com/docs/deploy-django>
-
-There's a current deployment that can be found here - <https://django-styleguide.hacksoft.io/>
-
-**Files related to Heroku deployment:**
-
-1. `render.yaml`
-    - Describes the setup. Also known as [Render Blueprint](https://render.com/docs/blueprint-spec)
-1. `docker/*_entrypoint.sh`
-    - Entrypoint for every different process type.
-1. `docker/production.Dockerfile`
-    - Dockerfile for production build.
-1. `requirements.txt`
-    - Heroku requires a root-level `requirements.txt`, so we've added that.
-
-### AWS ECS
-
-_Coming soon_
 
 ## Linters and Code Formatters
 
