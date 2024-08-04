@@ -26,7 +26,6 @@
   - [File uploads](#file-uploads)
   - [Helpful commands for local development without `docker compose`](#helpful-commands-for-local-development-without-docker-compose)
   - [Helpful commands for local development with `docker compose`](#helpful-commands-for-local-development-with-docker-compose)
-  - [Deployment](#deployment)
   - [Linters and Code Formatters](#linters-and-code-formatters)
 
 <!-- tocstop -->
@@ -324,10 +323,6 @@ To shell
 ```
 docker compose run django python manage.py shell
 ```
-
-## Deployment
-
-This project is ready to be deployed either on **Heroku** **Render** or **AWS ECS**.
 
 ## Linters and Code Formatters
 
