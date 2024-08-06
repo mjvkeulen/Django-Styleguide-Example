@@ -40,7 +40,6 @@ LOCAL_APPS = [
     "styleguide_example.integrations.apps.IntegrationsConfig",
     "styleguide_example.files.apps.FilesConfig",
     "styleguide_example.emails.apps.EmailsConfig",
-    "styleguide_example.blog_examples.apps.BlogExamplesConfig",
 ]
 
 THIRD_PARTY_APPS = [
@@ -55,9 +54,6 @@ THIRD_PARTY_APPS = [
 
 INSTALLED_APPS = [
     "django.contrib.admin",
-    # If you want to have required 2FA for the Django admin
-    # Uncomment the line below and comment out the default admin
-    # "styleguide_example.custom_admin.apps.CustomAdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",

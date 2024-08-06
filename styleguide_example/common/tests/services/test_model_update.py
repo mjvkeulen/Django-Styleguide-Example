@@ -6,7 +6,6 @@ from django.test import TestCase
 from django.test.utils import CaptureQueriesContext
 from django.utils import timezone
 
-from styleguide_example.blog_examples.models import TimestampsOpinionated
 from styleguide_example.common.factories import RandomModelFactory, SimpleModelFactory
 from styleguide_example.common.services import model_update
 
@@ -110,7 +109,7 @@ class ModelUpdateTests(TestCase):
         self.assertIn(simple_obj, updated_instance.simple_objects.all())
 
     def test_model_update_sets_automatically_updated_at_if_model_has_it_and_no_value_is_passed(self):
-        instance = TimestampsOpinionated()
+        instance = RandomModelFactory()
         instance.full_clean()
         instance.save()
 
@@ -128,7 +127,7 @@ class ModelUpdateTests(TestCase):
         self.assertIsNotNone(updated_instance.updated_at)
 
     def test_model_update_doesnt_automatically_set_updated_at_if_models_has_it_and_value_is_passed(self):
-        instance = TimestampsOpinionated()
+        instance = RandomModelFactory()
         instance.full_clean()
         instance.save()
 
@@ -148,7 +147,7 @@ class ModelUpdateTests(TestCase):
         self.assertEqual(updated_instance.updated_at, updated_at)
 
     def test_model_update_does_not_automatically_update_updated_at_if_kwarg_is_false(self):
-        instance = TimestampsOpinionated()
+        instance = RandomModelFactory()
         instance.full_clean()
         instance.save()
 
