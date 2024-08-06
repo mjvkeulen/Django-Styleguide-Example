@@ -14,7 +14,6 @@ from styleguide_example.files.utils import (
     file_generate_name,
     file_generate_upload_path,
 )
-from styleguide_example.integrations.aws.client import s3_generate_presigned_post
 from styleguide_example.users.models import BaseUser
 
 
@@ -129,8 +128,7 @@ class FileDirectUploadService:
         presigned_data: Dict[str, Any] = {}
 
         if settings.FILE_UPLOAD_STORAGE == FileUploadStorage.S3:
-            presigned_data = s3_generate_presigned_post(file_path=upload_path, file_type=file.file_type)
-
+            raise NotImplementedError
         else:
             presigned_data = {
                 "url": file_generate_local_upload_url(file_id=str(file.id)),

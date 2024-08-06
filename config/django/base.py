@@ -36,8 +36,6 @@ LOCAL_APPS = [
     "styleguide_example.api.apps.ApiConfig",
     "styleguide_example.users.apps.UsersConfig",
     "styleguide_example.errors.apps.ErrorsConfig",
-    "styleguide_example.testing_examples.apps.TestingExamplesConfig",
-    "styleguide_example.integrations.apps.IntegrationsConfig",
     "styleguide_example.files.apps.FilesConfig",
     "styleguide_example.emails.apps.EmailsConfig",
 ]
@@ -78,24 +76,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "config.urls"
-
-print(os.path.join(APPS_DIR, "templates"))
-
-TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(APPS_DIR, "templates")],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
-    },
-]
 
 WSGI_APPLICATION = "config.wsgi.application"
 

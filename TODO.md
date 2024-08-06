@@ -5,3 +5,4 @@
 - Group requirements and add links to repos see cookie cutter
 - Add commands to README.md
   - docker-compose run django pytest
+- Mailtrap is still used?
