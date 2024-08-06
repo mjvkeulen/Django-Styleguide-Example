@@ -1,7 +1,7 @@
 import os
 
 from config.env import BASE_DIR, env, env_to_enum
-from styleguide_example.files.enums import FileUploadStorage, FileUploadStrategy
+from bb.files.enums import FileUploadStorage, FileUploadStrategy
 
 FILE_UPLOAD_STRATEGY = env_to_enum(FileUploadStrategy, env("FILE_UPLOAD_STRATEGY", default="standard"))
 FILE_UPLOAD_STORAGE = env_to_enum(FileUploadStorage, env("FILE_UPLOAD_STORAGE", default="local"))

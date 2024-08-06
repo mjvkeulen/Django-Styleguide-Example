@@ -1,5 +1,5 @@
 from config.env import env, env_to_enum
-from styleguide_example.emails.enums import EmailSendingStrategy
+from bb.emails.enums import EmailSendingStrategy
 
 # local | mailtrap
 EMAIL_SENDING_STRATEGY = env_to_enum(EmailSendingStrategy, env("EMAIL_SENDING_STRATEGY", default="local"))

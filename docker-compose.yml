@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:14.1
     environment:
-      - POSTGRES_DB=styleguide_example_db
+      - POSTGRES_DB=bb_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
@@ -21,7 +21,7 @@ services:
       dockerfile: docker/local.Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/styleguide_example_db
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/bb_db
       - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672//
     volumes:
       - .:/app
@@ -36,9 +36,9 @@ services:
     build:
       context: .
       dockerfile: docker/local.Dockerfile
-    command: celery -A styleguide_example.tasks worker -l info --without-gossip --without-mingle --without-heartbeat
+    command: celery -A bb.tasks worker -l info --without-gossip --without-mingle --without-heartbeat
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/styleguide_example_db
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/bb_db
       - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672//
     volumes:
       - .:/app
@@ -51,9 +51,9 @@ services:
     build:
       context: .
       dockerfile: docker/local.Dockerfile
-    command: celery -A styleguide_example.tasks beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    command: celery -A bb.tasks beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/styleguide_example_db
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/bb_db
       - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672//
     volumes:
       - .:/app

@@ -1,5 +1,5 @@
 """
-WSGI config for styleguide_example project.
+WSGI config for bb project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
