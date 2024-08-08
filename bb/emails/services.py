@@ -33,7 +33,7 @@ def email_send(email: Email) -> Email:
             raise ApplicationError("Email sending failure triggered.")
 
     subject = email.subject
-    from_email = "styleguide-example@hacksoft.io"
+    from_email = "examplee@app.brainboost.nl"
     to = email.to
 
     html = email.html

@@ -31,7 +31,7 @@ class File(AbstractBaseModel):
 
     @property
     def url(self):
-        if settings.FILE_UPLOAD_STORAGE == FileUploadStorage.S3:
-            return self.file.url
+        if settings.FILE_UPLOAD_STORAGE == FileUploadStorage.AZURE:
+            raise NotImplementedError
 
         return f"{settings.APP_DOMAIN}{self.file.url}"

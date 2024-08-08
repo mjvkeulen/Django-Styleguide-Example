@@ -127,7 +127,7 @@ class FileDirectUploadService:
 
         presigned_data: Dict[str, Any] = {}
 
-        if settings.FILE_UPLOAD_STORAGE == FileUploadStorage.S3:
+        if settings.FILE_UPLOAD_STORAGE == FileUploadStorage.AZURE:
             raise NotImplementedError
         else:
             presigned_data = {

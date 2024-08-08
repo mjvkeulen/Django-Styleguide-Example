@@ -8,5 +8,4 @@ class FileUploadStrategy(Enum):
 
 class FileUploadStorage(Enum):
     LOCAL = "local"
-    S3 = "s3"
     AZURE = "azure"

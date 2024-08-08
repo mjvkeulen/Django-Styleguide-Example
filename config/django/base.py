@@ -16,13 +16,8 @@ from config.env import APPS_DIR, BASE_DIR, env
 
 env.read_env(os.path.join(BASE_DIR, ".env"))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "=ug_ucl@yi6^mrcjyz%(u0%&g2adt#bz3@yos%#@*t#t!ypx=a"
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DJANGO_DEBUG", default=True)
 
 ALLOWED_HOSTS = ["*"]
@@ -41,14 +36,12 @@ LOCAL_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "rest_framework",
     "ninja_extra",
     "ninja_jwt",
     "django_celery_results",
     "django_celery_beat",
     "corsheaders",
     "django_extensions",
-    "rest_framework_jwt",
 ]
 
 INSTALLED_APPS = [
@@ -154,13 +147,11 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-REST_FRAMEWORK = {
-    "EXCEPTION_HANDLER": "bb.api.exception_handlers.drf_default_with_modifications_exception_handler",
-    # 'EXCEPTION_HANDLER': 'bb.api.exception_handlers.hacksoft_proposed_exception_handler',
-    "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
-    "DEFAULT_AUTHENTICATION_CLASSES": [],
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }
 
 APP_DOMAIN = env("APP_DOMAIN", default="http://localhost:8000")
@@ -171,10 +162,10 @@ from config.settings.celery import *  # noqa
 from config.settings.cors import *  # noqa
 from config.settings.email_sending import *  # noqa
 from config.settings.files_and_storages import *  # noqa
-from config.settings.google_oauth2 import *  # noqa
 from config.settings.ninja_jwt import *  # noqa
 from config.settings.sentry import *  # noqa
 from config.settings.sessions import *  # noqa
+from config.settings.ignore_warnings import *  # noqa
 
 from config.settings.debug_toolbar.settings import *  # noqa
 from config.settings.debug_toolbar.setup import DebugToolbarSetup  # noqa

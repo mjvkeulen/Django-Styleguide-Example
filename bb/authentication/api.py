@@ -1,35 +1,15 @@
 from http import HTTPStatus
 
 from django.contrib.auth import authenticate, login, logout
-from ninja import Router, Schema
+from ninja import Router
 from ninja.security import django_auth
 from ninja_jwt.authentication import JWTAuth
-from rest_framework.response import Response
 
 from bb.authentication.auth_objects import SessionAsHeaderAuthentication
+from bb.authentication.schemas import LoginInSchema, LoginOutSchema, MeOutSchema
 from bb.core.schemas import ErrorSchema
-from bb.users.models import User
-from bb.users.schemas import UserOwnOutSchema
 
 router = Router()
-
-
-class LoginInSchema(Schema):
-    password: str
-    username: str
-
-
-class LoginOutSchema(Schema):
-    session: str
-    data: UserOwnOutSchema
-
-
-class MeOutSchema(Schema):
-    username: str
-    is_authenticated: bool
-    # Unauthenticated users don't have the following fields, so provide defaults.
-    email: str = None
-    full_name: str = None
 
 
 # TODO STACK: Settle on best approach to nest session and jwt routes into dedicated files with subrouters
