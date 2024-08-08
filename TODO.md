@@ -5,4 +5,8 @@
 - Group requirements and add links to repos see cookie cutter
 - Add commands to README.md
   - docker-compose run django pytest
+  - http://127.0.0.1:8000/api/docs
+  - Untill we have devcontainer up and running: docker-compose exec django /bin/zsh
 - Mailtrap is still used?
+- Remove GOOGLE_OAUTH2 stuff
+- Share dev environment (some scripts to install venv and tooling or a devcontainer)

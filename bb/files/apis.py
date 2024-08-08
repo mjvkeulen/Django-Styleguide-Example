@@ -3,7 +3,7 @@ from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from bb.api.mixins import ApiAuthMixin
+from bb.apis.mixins import ApiAuthMixin
 from bb.files.models import File
 from bb.files.services import (
     FileDirectUploadService,

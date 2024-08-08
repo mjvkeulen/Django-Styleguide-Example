@@ -33,7 +33,7 @@ LOCAL_APPS = [
     "bb.core.apps.CoreConfig",
     "bb.common.apps.CommonConfig",
     "bb.tasks.apps.TasksConfig",
-    "bb.api.apps.ApiConfig",
+    "bb.apis.apps.ApisConfig",
     "bb.users.apps.UsersConfig",
     "bb.errors.apps.ErrorsConfig",
     "bb.files.apps.FilesConfig",
@@ -42,6 +42,8 @@ LOCAL_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    "ninja_extra",
+    "ninja_jwt",
     "django_celery_results",
     "django_celery_beat",
     "django_filters",
@@ -76,6 +78,22 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "config.urls"
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(APPS_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
 
 WSGI_APPLICATION = "config.wsgi.application"
 
@@ -117,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "users.BaseUser"
+AUTH_USER_MODEL = "users.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -155,7 +173,7 @@ from config.settings.cors import *  # noqa
 from config.settings.email_sending import *  # noqa
 from config.settings.files_and_storages import *  # noqa
 from config.settings.google_oauth2 import *  # noqa
-from config.settings.jwt import *  # noqa
+from config.settings.ninja_jwt import *  # noqa
 from config.settings.sentry import *  # noqa
 from config.settings.sessions import *  # noqa
 

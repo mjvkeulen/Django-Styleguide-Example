@@ -1,21 +1,21 @@
 from django.contrib import admin, messages
 from django.core.exceptions import ValidationError
 
-from bb.users.models import BaseUser
+from bb.users.models import User
 from bb.users.services import user_create
 
 
-@admin.register(BaseUser)
-class BaseUserAdmin(admin.ModelAdmin):
-    list_display = ("email", "is_admin", "is_superuser", "is_active", "created_at", "updated_at")
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ("email", "is_superuser", "is_active", "created_at", "updated_at")
 
     search_fields = ("email",)
 
-    list_filter = ("is_active", "is_admin", "is_superuser")
+    list_filter = ("is_active", "is_superuser")
 
     fieldsets = (
         (None, {"fields": ("email",)}),
-        ("Booleans", {"fields": ("is_active", "is_admin", "is_superuser")}),
+        ("Booleans", {"fields": ("is_active", "is_superuser")}),
         ("Timestamps", {"fields": ("created_at", "updated_at")}),
     )
 

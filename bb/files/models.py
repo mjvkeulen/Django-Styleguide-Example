@@ -4,7 +4,7 @@ from django.db import models
 from bb.common.models import BaseModel
 from bb.files.enums import FileUploadStorage
 from bb.files.utils import file_generate_upload_path
-from bb.users.models import BaseUser
+from bb.users.models import User
 
 
 class File(BaseModel):
@@ -18,7 +18,7 @@ class File(BaseModel):
     # As a specific behavior,
     # We might want to preserve files after the uploader has been deleted.
     # In case you want to delete the files too, use models.CASCADE & drop the null=True
-    uploaded_by = models.ForeignKey(BaseUser, null=True, on_delete=models.SET_NULL)
+    uploaded_by = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     upload_finished_at = models.DateTimeField(blank=True, null=True)
 
