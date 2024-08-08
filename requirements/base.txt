@@ -31,7 +31,6 @@ django-ninja-extra==0.21.2 # Used by JWT to register controllers to be used as a
 djangorestframework==3.15.2 # TODO STACK: Replace with Django Ninja
 drf-jwt==1.19.2
 django-environ==0.11.2
-django-filter==24.2
 django-extensions==3.2.3
 django-cors-headers==4.4.0
 django-storages==1.14.4

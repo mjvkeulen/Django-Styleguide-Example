@@ -8,8 +8,8 @@ from rest_framework.response import Response
 
 from bb.authentication.auth_objects import SessionAsHeaderAuthentication
 from bb.core.schemas import ErrorSchema
-from bb.users.api import UserOwnOutSchema
 from bb.users.models import User
+from bb.users.schemas import UserOwnOutSchema
 
 router = Router()
 

@@ -1,11 +1,19 @@
+volumes:
+  bb_local_postgres_data: {}
+  bb_local_postgres_data_backups: {}
+
 services:
   db:
-    image: postgres:14.1
+    image: postgres:16.3
+    volumes:
+      - bb_local_postgres_data:/var/lib/postgresql/data
+      - bb_local_postgres_data_backups:/backups
     environment:
       - POSTGRES_DB=bb_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
 
+  # TODO STACK: Switch with Redis?
   rabbitmq:
     image: "rabbitmq:alpine"
 
@@ -30,6 +38,7 @@ services:
     depends_on:
       - db
       - rabbitmq
+      - mailpit
     restart: on-failure
 
   celery:
@@ -45,6 +54,7 @@ services:
     depends_on:
       - db
       - rabbitmq
+      - mailpit
     restart: on-failure
 
   beats:
@@ -60,4 +70,11 @@ services:
     depends_on:
       - db
       - rabbitmq
+      - mailpit
     restart: on-failure
+
+  mailpit:
+    image: docker.io/axllent/mailpit:latest
+    ports:
+      - "8025:8025"
+      # - "1025:1025"

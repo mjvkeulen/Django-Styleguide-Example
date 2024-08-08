@@ -46,7 +46,6 @@ THIRD_PARTY_APPS = [
     "ninja_jwt",
     "django_celery_results",
     "django_celery_beat",
-    "django_filters",
     "corsheaders",
     "django_extensions",
     "rest_framework_jwt",

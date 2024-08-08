@@ -1,23 +1,13 @@
 from ninja import Router
-from ninja import Schema
-from ninja_jwt.authentication import JWTAuth
+
 from bb.users.models import User
+
+from .schemas import UserOtherOutSchema
 
 router = Router()
 
 
-class UserOwnOutSchema(Schema):
-    id: int
-    username: str
-
-
-class UserOutSchema(Schema):
-    id: int
-    username: str
-
-
-@router.get("/{pk}", response=UserOutSchema, auth=JWTAuth())
+@router.get("/{pk}", response=UserOtherOutSchema)
 def user_get(request, pk: int):
     """Placeholder"""
-    user = User.objects.get(pk=pk)
-    return user
+    return User.objects.get(pk=pk)
