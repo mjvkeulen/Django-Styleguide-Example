@@ -1,9 +1,9 @@
 from django.db import models
 
-from bb.common.models import BaseModel
+from bb.common.models import AbstractBaseModel
 
 
-class Email(BaseModel):
+class Email(AbstractBaseModel):
     class Status(models.TextChoices):
         READY = "READY", "Ready"
         SENDING = "SENDING", "Sending"

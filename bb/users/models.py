@@ -2,11 +2,11 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from bb.common.models import BaseModel
+from bb.common.models import AbstractBaseModel
 
 
 # TODO STACK: Just work with User as table
-class User(AbstractUser, BaseModel):
+class User(AbstractUser, AbstractBaseModel):
     """
     Default custom user model for BrainBooster.
     """

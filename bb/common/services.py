@@ -62,6 +62,7 @@ def model_update(
 
     # Perform an update only if any of the fields were actually changed
     if has_updated:
+        # TODO STACK: Discuss and decide on its ideal handling (automatic vs manual)
         if auto_updated_at:
             # We want to take care of the `updated_at` field,
             # Only if the models has that field

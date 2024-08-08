@@ -1,13 +1,13 @@
 from django.conf import settings
 from django.db import models
 
-from bb.common.models import BaseModel
+from bb.common.models import AbstractBaseModel
 from bb.files.enums import FileUploadStorage
 from bb.files.utils import file_generate_upload_path
 from bb.users.models import User
 
 
-class File(BaseModel):
+class File(AbstractBaseModel):
     file = models.FileField(upload_to=file_generate_upload_path, blank=True, null=True)
 
     original_file_name = models.TextField()
